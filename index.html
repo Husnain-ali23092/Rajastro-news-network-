@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rajastro News Network</title>
+
+<style>
+
+/* =====================
+   RESET
+===================== */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f4f4f4;
+color:#222;
+line-height:1.6;
+}
+
+/* =====================
+   HEADER
+===================== */
+
+header{
+background:#111;
+color:white;
+padding:20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+}
+
+.logo{
+font-size:32px;
+font-weight:bold;
+color:#ff3c00;
+}
+
+.search{
+padding:12px;
+width:280px;
+border:none;
+border-radius:5px;
+outline:none;
+}
+
+/* =====================
+   NAVBAR
+===================== */
+
+nav{
+background:#ff3c00;
+padding:15px;
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+nav ul{
+display:flex;
+justify-content:center;
+gap:25px;
+list-style:none;
+flex-wrap:wrap;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+nav a:hover{
+color:yellow;
+}
+
+/* =====================
+   BREAKING NEWS
+===================== */
+
+.breaking{
+background:black;
+color:white;
+padding:12px;
+font-weight:bold;
+overflow:hidden;
+}
+
+.breaking span{
+color:yellow;
+}
+
+/* =====================
+   HERO SECTION
+===================== */
+
+.hero{
+height:500px;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+background:
+linear-gradient(
+rgba(0,0,0,.6),
+rgba(0,0,0,.6)
+),
+url("https://picsum.photos/1400/700");
+background-size:cover;
+background-position:center;
+}
+
+.hero h1{
+font-size:60px;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:20px;
+max-width:700px;
+}
+
+/* =====================
+   NEWS GRID
+===================== */
+
+.news-grid{
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(320px,1fr));
+gap:25px;
+padding:30px;
+}
+
+.card{
+background:white;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.card-content{
+padding:20px;
+}
+
+.card-content h3{
+margin-bottom:10px;
+}
+
+.card-content p{
+color:#555;
+}
+
+/* =====================
+   TRENDING
+===================== */
+
+.trending{
+background:white;
+padding:30px;
+margin:20px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.trending ul{
+margin-top:15px;
+padding-left:20px;
+}
+
+.trending li{
+margin-bottom:10px;
+}
+
+/* =====================
+   WEATHER
+===================== */
+
+.weather{
+background:#eee;
+padding:50px;
+text-align:center;
+}
+
+.weather-box{
+display:inline-block;
+padding:20px;
+margin:10px;
+background:white;
+border-radius:10px;
+min-width:180px;
+box-shadow:0 3px 10px rgba(0,0,0,.1);
+}
+
+/* =====================
+   GALLERY
+===================== */
+
+.gallery{
+padding:40px;
+}
+
+.gallery h2{
+text-align:center;
+margin-bottom:25px;
+}
+
+.gallery-grid{
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.gallery-grid img{
+width:100%;
+border-radius:10px;
+transition:.4s;
+}
+
+.gallery-grid img:hover{
+transform:scale(1.05);
+}
+
+/* =====================
+   POLL
+===================== */
+
+.poll{
+padding:50px;
+text-align:center;
+}
+
+.poll button{
+padding:12px 25px;
+margin:10px;
+border:none;
+background:#ff3c00;
+color:white;
+cursor:pointer;
+border-radius:5px;
+font-size:16px;
+}
+
+.poll button:hover{
+background:#d92f00;
+}
+
+
+.video-news{
+padding:40px;
+text-align:center;
+background:white;
+}
+
+.video-news iframe{
+max-width:900px;
+border:none;
+}
+
+
+/* =====================
+   NEWSLETTER
+===================== */
+
+.newsletter{
+background:#ff3c00;
+color:white;
+padding:60px;
+text-align:center;
+}
+
+.newsletter input{
+padding:12px;
+width:320px;
+max-width:90%;
+border:none;
+border-radius:5px;
+margin-top:15px;
+}
+
+.newsletter button{
+padding:12px 20px;
+background:black;
+color:white;
+border:none;
+margin-left:10px;
+cursor:pointer;
+}
+
+
+.chatbot{
+background:white;
+padding:40px;
+text-align:center;
+margin:20px;
+border-radius:10px;
+}
+
+#chatbox{
+height:200px;
+overflow-y:auto;
+border:1px solid #ccc;
+padding:10px;
+margin-bottom:10px;
+text-align:left;
+}
+
+.chatbot input{
+width:70%;
+padding:10px;
+}
+
+.chatbot button{
+padding:10px 20px;
+background:#ff3c00;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+.card{
+animation:fade 1s;
+}
+
+@keyframes fade{
+
+from{
+opacity:0;
+transform:translateY(50px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+
+/* =====================
+   FOOTER
+===================== */
+
+footer{
+background:#111;
+color:white;
+padding:50px;
+text-align:center;
+}
+
+footer button{
+padding:10px 20px;
+margin-top:15px;
+cursor:pointer;
+}
+
+
+/* =====================
+   DARK MODE
+===================== */
+
+.dark{
+background:#121212;
+color:white;
+}
+
+.dark .card,
+.dark .trending,
+.dark .weather-box{
+background:#1e1e1e;
+color:white;
+}
+
+.dark .card-content p{
+color:#ccc;
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:38px;
+}
+
+.hero p{
+font-size:16px;
+}
+
+.search{
+width:100%;
+margin-top:10px;
+}
+
+header{
+flex-direction:column;
+}
+
+}
+
+.mobile-menu{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:black;
+padding:15px;
+display:flex;
+justify-content:space-around;
+}
+
+.mobile-menu a{
+color:white;
+text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<button class="notify">🔔</button>
+<div class="logo">RNN NEWS</div>
+
+<input class="search" placeholder="Search news...">
+<div id="clock"></div>
+</header>
+
+<nav>
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">World</a></li>
+<li><a href="#">Politics</a></li>
+<li><a href="#">Technology</a></li>
+<li><a href="#">Sports</a></li>
+<li><a href="#">Business</a></li>
+</ul>
+</nav>
+
+<div class="breaking">
+<span>BREAKING:</span> Rajastro news updates every minute...
+</div>
+
+<section class="hero">
+<div>
+<h1>Latest News Around The World</h1>
+<p>Stay informed with breaking headlines.</p>
+</div>
+</section>
+
+<section class="news-grid">
+
+<section class="news-grid" id="newsContainer">
+
+</section>
+
+<section class="trending">
+<h2>Trending Topics</h2>
+<ul>
+<li>Artificial Intelligence 🔥 12,500 Views</li>
+
+<li>Global Economy 🔥 10,200 Views</li>
+
+<li>Football Championship 🔥 8,400 Views</li>
+
+<li>Climate Change 🔥 7,100 Views</li>
+</ul>
+</section>
+
+<section class="weather">
+<h2>Weather</h2>
+
+<div class="weather-box">
+☀ Karachi 40°C
+</div>
+
+<div class="weather-box">
+🌤 Lahore 38°C
+</div>
+
+<div class="weather-box">
+🌦 Islamabad 29°C
+</div>
+
+</section>
+
+<section class="gallery">
+
+<h2> News Gallery</h2>
+
+<div class="gallery-grid">
+
+<img src="https://t4.ftcdn.net/jpg/05/16/20/91/360_F_516209113_csr6sPNh8aBrsx8prnluIE1Jxk8fCkld.jpg">
+<img src="https://img.magnific.com/free-photo/media-journalism-global-daily-news-content-concept_53876-123733.jpg?semt=ais_hybrid&w=740&q=80">
+<img src="https://live.staticflickr.com/8383/8595713182_b1f9095e4b_z.jpg">
+<img src="https://img.freepik.com/premium-photo/office-stuff-devices-floating-with-news-website-3d-rendering_926199-3848159.jpg">
+
+</div>
+
+</section>
+
+<section class="poll">
+
+<h2>Today's Poll</h2>
+
+<button onclick="vote('Technology')">
+Technology
+</button>
+
+<button onclick="vote('Sports')">
+Sports
+</button>
+
+<button onclick="vote('Business')">
+Business
+</button>
+
+<div id="result"></div>
+
+</section>
+
+<section class="comments">
+
+<h2>Comments</h2>
+
+<textarea
+placeholder="Write comment..."
+rows="5"
+cols="40"></textarea>
+
+<br><br>
+
+<button>Post Comment</button>
+
+</section>
+
+<section class="video-news">
+
+<h2>Video News</h2>
+
+<a href="https://www.youtube.com" target="_blank">
+Watch News Videos on YouTube
+</a>
+
+</section>
+
+<section class="newsletter">
+
+<h2>Subscribe</h2>
+
+<input placeholder="Enter Email">
+
+<button>Subscribe</button>
+
+
+</section>
+
+
+<section class="chatbot">
+
+<h2>🤖 News AI Assistant</h2>
+
+<div id="chatbox">
+<p><b>AI:</b> Hello! Ask me about Technology, Sports, or Business news.</p>
+</div>
+
+<input type="text" id="userInput" placeholder="Ask a question...">
+
+<button onclick="sendMessage()">Send</button>
+
+</section>
+
+
+<footer>
+
+<h2>Rajastro News Network</h2>
+
+<p>© 2026 All Rights Reserved</p>
+
+<button onclick="darkMode()">
+🌙 Dark Mode
+</button>
+<div class="social">
+
+<a href="#">Facebook</a>
+<a href="#">Instagram</a>
+<a href="#">YouTube</a>
+<a href="#">Twitter</a>
+
+</div>
+</footer>
+
+<script>
+
+
+function sendMessage(){
+
+let input =
+document.getElementById("userInput");
+
+let msg = input.value.toLowerCase();
+
+let reply = "Sorry, I don't understand.";
+
+if(msg.includes("technology")){
+reply = "Technology news: AI and robotics are growing rapidly.";
+}
+
+else if(msg.includes("sports")){
+reply = "Sports news: Major football tournaments are trending.";
+}
+
+else if(msg.includes("business")){
+reply = "Business news: Global markets are seeing new changes.";
+}
+
+document.getElementById("chatbox").innerHTML +=
+"<p><b>You:</b> " + input.value + "</p>";
+
+document.getElementById("chatbox").innerHTML +=
+"<p><b>AI:</b> " + reply + "</p>";
+
+input.value = "";
+
+}
+
+let tech = 0;
+let sports = 0;
+let business = 0;
+
+function vote(choice){
+
+if(choice == "Technology") tech++;
+if(choice == "Sports") sports++;
+if(choice == "Business") business++;
+
+document.getElementById("result").innerHTML =
+`
+Technology: ${tech}<br>
+Sports: ${sports}<br>
+Business: ${business}
+`;
+
+}
+
+function darkMode(){
+
+document.body.classList.toggle("dark");
+
+}
+
+/* Live Clock */
+
+setInterval(()=>{
+
+document.title =
+new Date().toLocaleTimeString();
+
+},1000);
+setInterval(()=>{
+document.getElementById("clock").innerHTML =
+new Date().toLocaleString();
+},1000);
+
+
+const apiKey = "091891e7e2034063a108c0879ee6dc08";
+
+fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`)
+.then(response => response.json())
+.then(data => {
+
+let newsContainer =
+document.getElementById("newsContainer");
+
+data.articles.forEach(article => {
+
+newsContainer.innerHTML += `
+<div class="card">
+<img src="${article.urlToImage || 'https://picsum.photos/400/250'}">
+<div class="card-content">
+<h3>${article.title}</h3>
+<p>${article.description || ''}</p>
+<a href="${article.url}" target="_blank">
+<button>Read More</button>
+</a>
+</div>
+</div>
+`;
+
+});
+
+});
+
+
+
+</script>
+<div class="mobile-menu">
+
+<a href="#">🏠 Home</a>
+<a href="#">🔥 Trending</a>
+<a href="#">🔍 Search</a>
+<a href="#">👤 Profile</a>
+
+</div>
+
+</body>
+</html>
